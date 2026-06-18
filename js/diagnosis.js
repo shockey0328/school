@@ -163,6 +163,16 @@ function getLatestPerStudent(records) {
   return Object.values(map);
 }
 
+/** 统计有作答记录的学生人数（参与率分子，与「作答人数」口径一致） */
+function countHwParticipants(records) {
+  var set = new Set();
+  (records || []).forEach(function (r) {
+    var id = sid(r);
+    if (id) set.add(id);
+  });
+  return set.size;
+}
+
 function sortClassNames(list) {
   return list.slice().sort(function (a, b) {
     var na = parseInt(String(a).replace(/\D/g, ''), 10);
@@ -1084,12 +1094,9 @@ function renderPaperDetailPage(paperId) {
   var subject = rowSubject(records[0]) || '--';
   var scene = records[0].scene || '--';
   var totalStudents = currentStudents.length;
-  var submittedSet = new Set();
-  records.forEach(function (d) {
-    if (isSubmittedRow(d)) submittedSet.add(sid(d));
-  });
-  var submittedCount = submittedSet.size;
-  var submitRate = totalStudents > 0 ? calcPercent(submittedCount, totalStudents) : 0;
+  var participantCount = countHwParticipants(records);
+  var participateRate =
+    totalStudents > 0 ? calcPercent(participantCount, totalStudents) : 0;
   var avgDec = calcCorrectRate(records);
   var avgText = avgDec !== null ? formatPercent(avgDec) : '--';
   var stats = buildPaperQuestionStats(records);
@@ -1106,7 +1113,7 @@ function renderPaperDetailPage(paperId) {
       ' · ' +
       (typeof formatSceneLabel === 'function' ? formatSceneLabel(scene) : scene) +
       ' · 参与 ' +
-      submittedCount +
+      participantCount +
       '/' +
       totalStudents +
       ' 人';
@@ -1119,7 +1126,7 @@ function renderPaperDetailPage(paperId) {
   html += '<div class="paper-detail__overview">';
   html +=
     '<div class="paper-detail__stat"><div class="paper-detail__stat-label">参与率</div><div class="paper-detail__stat-value">' +
-    submitRate +
+    participateRate +
     '%</div></div>';
   html +=
     '<div class="paper-detail__stat"><div class="paper-detail__stat-label">平均正确率</div><div class="paper-detail__stat-value" style="color:' +
@@ -1133,7 +1140,7 @@ function renderPaperDetailPage(paperId) {
     ' 题</div></div>';
   html +=
     '<div class="paper-detail__stat"><div class="paper-detail__stat-label">作答人数</div><div class="paper-detail__stat-value">' +
-    records.length +
+    participantCount +
     ' 人</div></div>';
   html += '</div>';
   if (stats && stats.notSubmitted.length) {
