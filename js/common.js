@@ -587,8 +587,6 @@
     document.title = '登录 — 学情数据看板';
     var logoEl = document.querySelector('.login-logo');
     if (logoEl) logoEl.textContent = '学情数据看板';
-    var copyEl = document.querySelector('.login-copyright');
-    if (copyEl) copyEl.textContent = '© 2025 学情数据看板';
   }
 
   function resolveAssetHref(filename, cacheBust) {

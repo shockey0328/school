@@ -123,7 +123,7 @@ a:focus:not(:focus-visible) {
   z-index: 1;
   width: 100%;
   max-width: 420px;
-  padding: 44px 40px;
+  padding: 36px 32px;
   text-align: center;
   background: var(--surface);
   border-radius: var(--radius-2xl);
@@ -137,7 +137,7 @@ a:focus:not(:focus-visible) {
 
 .login-logo {
   text-align: center;
-  font-size: clamp(15px, 3.2vw, 19px);
+  font-size: clamp(20px, 4vw, 22px);
   font-weight: 700;
   letter-spacing: -0.02em;
   color: var(--primary);
@@ -145,19 +145,14 @@ a:focus:not(:focus-visible) {
   max-width: 100%;
 }
 
-.login-subtitle {
+.login-tagline {
   text-align: center;
-  margin-top: 8px;
-  font-size: 15px;
-  font-weight: 500;
+  margin-top: 6px;
+  margin-bottom: 20px;
+  font-size: 14px;
+  font-weight: 400;
   color: var(--text-secondary);
-  letter-spacing: 0.02em;
-}
-
-.login-divider {
-  height: 1px;
-  background: var(--border);
-  margin: 24px 0;
+  letter-spacing: 0.01em;
 }
 
 .login-field {
@@ -175,15 +170,19 @@ a:focus:not(:focus-visible) {
   border-radius: var(--radius-md);
   font-size: 15px;
   font-weight: 600;
-  letter-spacing: 0.12em;
+  letter-spacing: normal;
 }
 
 .login-hint {
   text-align: center;
-  margin-top: 20px;
-  font-size: 12px;
+  margin-top: 16px;
+  padding: 10px 12px;
+  font-size: 13px;
   line-height: 1.5;
-  color: var(--text-light);
+  color: var(--text-secondary);
+  background: var(--primary-muted);
+  border: 1px solid rgba(127, 29, 29, 0.08);
+  border-radius: var(--radius-sm);
 }
 
 .login-copyright {
