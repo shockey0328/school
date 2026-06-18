@@ -5,35 +5,39 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script src="js/site-config.js"></script>
     <title>登录 — 学情数据看板</title>
-    <link rel="stylesheet" href="css/style.css?v=20260625" />
+    <link rel="stylesheet" href="css/style.css?v=20260618" />
   </head>
   <body class="login-page">
     <main class="login-card login-card--elevated" aria-label="集团登录">
-      <div class="login-logo">学情数据看板</div>
-      <div class="login-tagline">统一登录入口</div>
-      <div class="login-field">
-        <label class="visually-hidden" for="username">账号</label>
-        <input
-          class="input"
-          type="text"
-          id="username"
-          name="username"
-          placeholder="请输入账号"
-          autocomplete="username"
-        />
-      </div>
-      <div class="login-field-last">
-        <label class="visually-hidden" for="password">密码</label>
-        <input
-          class="input"
-          type="password"
-          id="password"
-          name="password"
-          placeholder="请输入密码"
-          autocomplete="current-password"
-        />
-      </div>
-      <button type="button" class="btn btn-primary" id="loginBtn" onclick="handleLogin()">登录</button>
+      <header class="login-header">
+        <div class="login-logo">学情数据看板</div>
+        <p class="login-tagline">统一登录入口</p>
+      </header>
+      <form class="login-form" onsubmit="return false;">
+        <div class="login-field">
+          <label class="visually-hidden" for="username">账号</label>
+          <input
+            class="input"
+            type="text"
+            id="username"
+            name="username"
+            placeholder="请输入账号"
+            autocomplete="username"
+          />
+        </div>
+        <div class="login-field">
+          <label class="visually-hidden" for="password">密码</label>
+          <input
+            class="input"
+            type="password"
+            id="password"
+            name="password"
+            placeholder="请输入密码"
+            autocomplete="current-password"
+          />
+        </div>
+        <button type="button" class="btn btn-primary login-submit" id="loginBtn" onclick="handleLogin()">登录</button>
+      </form>
       <p class="login-hint">账号请联系管理员获取</p>
       <div id="fileProtocolWarn" class="login-file-warn" hidden role="alert">
         <strong>无法直接打开 HTML 文件</strong>

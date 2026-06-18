@@ -123,7 +123,7 @@ a:focus:not(:focus-visible) {
   z-index: 1;
   width: 100%;
   max-width: 420px;
-  padding: 36px 32px;
+  padding: 40px 36px 36px;
   text-align: center;
   background: var(--surface);
   border-radius: var(--radius-2xl);
@@ -133,6 +133,10 @@ a:focus:not(:focus-visible) {
 
 .login-card--elevated {
   box-shadow: var(--shadow-lg), 0 0 0 1px rgba(127, 29, 29, 0.06);
+}
+
+.login-header {
+  margin-bottom: 40px;
 }
 
 .login-logo {
@@ -146,27 +150,34 @@ a:focus:not(:focus-visible) {
 }
 
 .login-tagline {
-  text-align: center;
-  margin-top: 6px;
-  margin-bottom: 20px;
+  margin-top: 10px;
   font-size: 14px;
   font-weight: 400;
+  line-height: 1.5;
   color: var(--text-secondary);
   letter-spacing: 0.01em;
 }
 
+.login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
 .login-field {
-  margin-bottom: 16px;
   text-align: left;
 }
 
-.login-field-last {
-  margin-bottom: 24px;
+.login-page .input {
+  padding: 13px 16px;
+  font-size: 15px;
+  border-radius: var(--radius-md);
 }
 
-.login-page #loginBtn {
+.login-submit {
   width: 100%;
-  height: 48px;
+  height: 50px;
+  margin-top: 8px;
   border-radius: var(--radius-md);
   font-size: 15px;
   font-weight: 600;
@@ -175,10 +186,10 @@ a:focus:not(:focus-visible) {
 
 .login-hint {
   text-align: center;
-  margin-top: 16px;
-  padding: 10px 12px;
+  margin-top: 24px;
+  padding: 10px 14px;
   font-size: 13px;
-  line-height: 1.5;
+  line-height: 1.55;
   color: var(--text-secondary);
   background: var(--primary-muted);
   border: 1px solid rgba(127, 29, 29, 0.08);
