@@ -1,0 +1,31 @@
+学情数据看板 — 部署与本地验收（与线上一致）
+
+一、交付内容与线上关系
+  将本目录（guangda-dashboard）内用于运行的静态文件上传到 Web 服务器或 OSS 后，
+  访问方式与本地使用 serve-local.py / start-local.bat 启动后通过 http(s):// 打开
+  的行为一致：同一套 HTML/CSS/JS、同一套 data/*.csv、同一相对路径规则。
+  可选不上传：*.bat、serve-local.py、打开看板.url、last-open-url.txt（仅本地辅助）。
+
+二、与线上一致的三点约定
+  1) 必须用 HTTP(S) 访问，不要用资源管理器直接双击 HTML（file://）。浏览器会拦截
+     本地 CSV，登录与图表无法与线上一致。
+  2) 本地 serve-local.py 已对 .html/.css/.js/.csv 等设置 charset=utf-8，接近常见
+     Nginx/OSS 静态配置，减少中文数据在本地与线上表现不一致。
+  3) 若线上挂在子路径（例如 https://域名/edu/board/），请编辑 js/site-config.js
+     中的 GUANGDA_SITE_BASE 为与线上一致的 Web 路径（如 '/edu/board/'），并在
+     服务器同一路径下挂载本目录内容后再验收。根目录部署则保持 GUANGDA_SITE_BASE = ''。
+
+三、本地验收操作
+  1) 双击上级目录「验收启动.bat」或本目录 start-local.bat。
+  2) 用控制台中的地址或「打开看板.url」在浏览器中打开（保持命令行窗口不关）。
+  3) 按登录、驾驶舱、诊断、学生管理等流程操作，与上线后验收项相同。
+
+  若双击 start-local.bat 后窗口一闪或提示找不到 Python：
+  - Windows 上 PATH 里的「python」有时是 Microsoft Store 占位程序，无法真正运行脚本。
+    本目录 start-local.bat 已优先使用 %USERPROFILE%\miniforge3\python.exe 等 Conda 路径；
+    仍失败时请在「Anaconda Prompt」中 conda activate 你的环境后执行: python serve-local.py
+  - 若登录后立刻回到登录页，可尝试清除本站点的浏览器 localStorage 后重新登录。
+
+四、CDN 说明
+  页面使用 jsdelivr 加载 PapaParse、ECharts。请保证验收网络可访问该 CDN；若线上
+  改为自有 CDN，应同步替换各 HTML 中的 script 地址，本地再测一遍。

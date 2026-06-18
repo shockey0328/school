@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="js/site-config.js"></script>
+    <title>学生详情 - 学情数据看板</title>
+    <link rel="stylesheet" href="css/style.css?v=20260529c" />
+  </head>
+  <body class="page-student-detail" data-page-title="学生详情">
+    <div class="dashboard-layout">
+      <div class="header" id="header"></div>
+      <div class="sidebar" id="sidebar"></div>
+      <div class="main-content">
+        <nav class="breadcrumb" aria-label="面包屑">
+          <a href="diagnosis.html">班级管理</a>
+          <span class="sep" aria-hidden="true">&gt;</span>
+          <span>学生详情</span>
+        </nav>
+
+        <div class="student-info-card" id="studentInfo"></div>
+
+        <div id="metricCards" class="grid-5 mb-24"></div>
+
+        <div class="card mb-16">
+          <div class="card-title mb-16">学科学习画像</div>
+          <div id="subjectChart" style="min-height: 300px"></div>
+        </div>
+
+        <div class="card mb-16">
+          <div class="card-header">
+            <div class="card-title">学习明细</div>
+            <div class="card-header__actions">
+              <label class="board-field">
+                <span class="filter-label">学科</span>
+                <select id="detailSubjectSelect" class="select" onchange="onDetailSubjectChange()"></select>
+              </label>
+            </div>
+          </div>
+          <div class="tabs board-tabs mb-16" id="detailTabs" role="tablist">
+            <div class="tab board-tabs__btn active" role="tab" onclick="switchDetailTab(0)">学习内容</div>
+            <div class="tab board-tabs__btn" role="tab" onclick="switchDetailTab(1)">做题记录</div>
+          </div>
+          <div id="detailTabContent0" class="tab-content active" role="tabpanel"></div>
+          <div id="detailTabContent1" class="tab-content" role="tabpanel" hidden></div>
+        </div>
+
+        <div class="card mb-16">
+          <div class="card-header">
+            <div class="card-title">知识点掌握情况</div>
+            <div class="card-header__actions">
+              <label class="board-field">
+                <span class="filter-label">学科</span>
+                <select id="knowledgeSubjectSelect" class="select" onchange="onKnowledgeSubjectChange()"></select>
+              </label>
+            </div>
+          </div>
+          <div id="knowledgeSummary" class="grid-4 mb-16"></div>
+          <div id="knowledgeTable"></div>
+        </div>
+
+        <div class="ai-card mb-16">
+          <div class="ai-title">AI 学情分析</div>
+          <div id="aiAnalysis"></div>
+        </div>
+
+        <div class="card student-report-card">
+          <div class="student-report-card__title">生成个人学情报告</div>
+          <p class="student-report-card__desc">
+            生成可打印的个人学情分析报告，适用于家校沟通、个别辅导
+          </p>
+          <button type="button" class="btn btn-primary" onclick="generateStudentReport()">生成报告</button>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/echarts@5.4.3/dist/echarts.min.js"></script>
+    <script src="js/common.js?v=20260612"></script>
+    <script src="js/student-detail.js?v=20260612"></script>
+  </body>
+</html>

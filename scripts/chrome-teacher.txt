@@ -1,0 +1,162 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <script src="js/site-config.js"></script>
+    <title>鐝骇鐪嬫澘 - 骞垮ぇ鏁欒偛闆嗗洟瀛︽儏鏁版嵁鐪嬫澘</title>
+    <link rel="stylesheet" href="css/style.css">
+  </head>
+  <body class="page-diagnosis">
+    <div class="dashboard-layout">
+      <div class="header" id="header"><div class="header-left"><div class="header-school-identity"><img class="header-school-logo" src="http://127.0.0.1:8080/%E5%B9%BF%E5%B7%9E%E5%A4%A7%E5%AD%A6%E9%99%84%E5%B1%9E%E4%B8%AD%E5%AD%A6logo.png?v=20260215" alt="" decoding="async" fetchpriority="high"><span class="header-brand">骞垮窞澶у闄勫睘涓</span></div><span class="header-sep"></span><span class="header-title">瀛︽儏鏁版嵁鐪嬫澘</span><div id="headerDateRangeBar" class="header-date-range"><span class="page-date-range__label">鏁版嵁鏃舵</span><input type="date" id="dateRangeStart" class="select page-date-range__input" value="2025-09-01" min="2025-09-01" max="2025-09-30"><span class="page-date-range__sep">鑷?/span><input type="date" id="dateRangeEnd" class="select page-date-range__input" value="2025-09-30" min="2025-09-01" max="2025-09-30"><button type="button" class="btn btn-outline btn-sm" onclick="onDateRangeApply()">搴旂敤</button><span class="page-date-range__hint">灞曠ず璇ユ椂娈靛唴鐨勬暟鎹?/span></div></div><div class="header-center"><span class="header-school" style="display:none;">骞垮窞澶у闄勫睘涓</span></div><div class="header-right"><span class="tag tag-warning">鑰佸笀</span><span style="margin-left:8px;color:var(--text-secondary);"><span style="margin-left:6px;font-size:12px;color:var(--text-light);">路 鏁板</span></span><button type="button" class="btn btn-outline btn-sm" style="margin-left:12px;" onclick="AppState.logout()">閫€鍑?/button></div></div>
+      <div class="sidebar" id="sidebar"><a href="diagnosis.html" class="menu-item active"><span class="menu-icon menu-icon--abbr" aria-hidden="true">鐝?/span><span class="menu-label">鐝骇鐪嬫澘</span></a><a href="students.html" class="menu-item"><span class="menu-icon menu-icon--abbr" aria-hidden="true">鐢?/span><span class="menu-label">瀛︾敓绠＄悊</span></a></div>
+      <div class="main-content main-content--board">
+        <header class="page-header page-header--board">
+          <div class="page-header__main">
+            <h1 class="page-title">鐝骇鐪嬫澘</h1>
+            <p class="page-title-sub">鏍稿績鎸囨爣銆佷綔涓氬垎鏋愪笌鑷富瀛︿範</p>
+          </div>
+        </header>
+
+        <section class="board-zone board-zone--toolbar" aria-label="鐝骇绛涢€?>
+          <div class="board-toolbar card">
+            <div class="board-toolbar__fields">
+              <label class="board-field">
+                <span class="filter-label">骞寸骇</span>
+                <select id="gradeSelect" class="select" onchange="onGradeChange()" disabled=""><option value="鍒濅竴">鍒濅竴</option></select>
+              </label>
+              <label class="board-field">
+                <span class="filter-label">鐝骇</span>
+                <select id="classSelect" class="select" onchange="onClassChange()"><option value="1鐝?>1鐝?/option><option value="2鐝?>2鐝?/option><option value="3鐝?>3鐝?/option></select>
+              </label>
+              <label class="board-field">
+                <span class="filter-label">瀛︾</span>
+                <select id="subjectSelect" class="select" onchange="onSubjectChange()"><option value="">鍏ㄩ儴瀛︾</option><option value="鏁板">鏁板</option><option value="璇枃">璇枃</option><option value="鑻辫">鑻辫</option><option value="鍘嗗彶">鍘嗗彶</option><option value="閬撳痉涓庢硶娌?>閬撳痉涓庢硶娌?/option><option value="鐢熺墿">鐢熺墿</option><option value="绉戝">绉戝</option></select>
+              </label>
+            </div>
+          </div>
+        </section>
+
+        <section class="board-zone board-zone--metrics" aria-label="鐝骇姒傝">
+          <h2 class="board-section__heading">鐝骇姒傝</h2>
+          <div id="coreMetrics" class="board-metrics-layout"><article class="overview-metric overview-metric--compact overview-metric--neutral"><div class="overview-metric__top"><span class="overview-metric__icon"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path><path d="M9 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8z"></path><path d="M22 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg></span></div><div class="overview-metric__value">4</div><div class="overview-metric__label">鐝骇浜烘暟</div></article><article class="overview-metric overview-metric--compact overview-metric--neutral"><div class="overview-metric__top"><span class="overview-metric__icon"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9-6-18-3 9H2"></path></svg></span></div><div class="overview-metric__value">4</div><div class="overview-metric__label">瀛︿範鍙備笌浜烘暟</div></article><article class="overview-metric overview-metric--hero overview-metric--ok"><div class="overview-metric__top"><span class="overview-metric__icon"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 20V10"></path><path d="M12 20V4"></path><path d="M6 20v-6"></path></svg></span><span class="overview-metric__status overview-metric__status--ok">杈炬爣</span></div><div class="overview-metric__value">100%</div><div class="overview-metric__label">瀛︿範鍙備笌鐜囷紙瑕嗙洊鐜囷級</div><div class="overview-metric__micro"><span class="overview-metric__micro-fill overview-metric__micro-fill--ok" style="width:100%"></span></div></article><article class="overview-metric overview-metric--hero overview-metric--ok"><div class="overview-metric__top"><span class="overview-metric__icon"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 1l4 4-4 4"></path><path d="M3 11V9a4 4 0 0 1 4-4h14"></path><path d="M7 23l-4-4 4-4"></path><path d="M21 13v2a4 4 0 0 1-4 4H3"></path></svg></span><span class="overview-metric__status overview-metric__status--ok">娲昏穬</span></div><div class="overview-metric__value">63.0</div><div class="overview-metric__label">浜哄潎瀛︿範棰戞</div><div class="overview-metric__micro"><span class="overview-metric__micro-fill overview-metric__micro-fill--ok" style="width:100%"></span></div></article></div>
+        </section>
+
+        <section class="board-zone board-zone--analysis" aria-label="瀛︽儏鍒嗘瀽">
+          <nav class="board-tabs tabs" id="mainTabs" role="tablist">
+            <button type="button" class="tab board-tabs__btn active" role="tab" onclick="switchMainTab(0)">浣滀笟鍒嗘瀽</button>
+            <button type="button" class="tab board-tabs__btn" role="tab" onclick="switchMainTab(1)">鑷富瀛︿範</button>
+          </nav>
+
+          <div class="tab-content active board-panel homework-panel" id="homeworkPanel" role="tabpanel">
+            <section class="hw-zone hw-zone--data">
+              <div class="card hw-workspace">
+                <header class="hw-workspace__head">
+                  <div class="hw-workspace__title-wrap">
+                    <h3 class="card-title">閫夋嫨浣滀笟</h3>
+                    <button type="button" class="hw-help-btn" title="鍦ㄤ笅鏂瑰嬀閫夎瘯鍗锋垨缁冧範锛屾敮鎸佸閫夊悎骞跺垎鏋愶紱纭鍚庡睍绀烘牳蹇冩寚鏍囥€佽祫婧愭槑缁嗕笌璁茶瘎寤鸿銆? aria-label="鎿嶄綔璇存槑">
+                      ?
+                    </button>
+                  </div>
+                </header>
+
+                <details class="hw-filter-panel" open="">
+                  <summary class="hw-filter-panel__summary">鏃堕棿绛涢€?/summary>
+                  <div class="hw-filter-panel__body hw-picker__filters">
+                    <span class="filter-label">鏃堕棿鑼冨洿</span>
+                    <input type="date" id="hwDateStart" class="select hw-picker__date" value="2025-09-01" max="2025-09-30">
+                    <span class="hw-picker__sep">鑷?/span>
+                    <input type="date" id="hwDateEnd" class="select hw-picker__date" value="2025-09-30" max="2025-09-30">
+                    <button type="button" class="btn btn-primary btn-sm" onclick="filterHomeworkByDate()">搴旂敤绛涢€?/button>
+                  </div>
+                </details>
+
+                <div class="hw-workspace__table-label">浣滀笟鍒楄〃</div>
+                <div class="hw-picker__table-zone">
+                  <div id="homeworkCheckList" class="hw-picker__list"><table class="hw-table"><colgroup><col class="hw-table__col-check"><col class="hw-table__col-date"><col class="hw-table__col-name"><col class="hw-table__col-subject"><col class="hw-table__col-scene"><col class="hw-table__col-participate"><col class="hw-table__col-action"></colgroup><thead><tr><th class="hw-table__col-check"><input type="checkbox" id="hwSelectAll" onchange="toggleSelectAll(this)" aria-label="鍏ㄩ€夋湰椤?></th><th class="hw-table__col-date">鏃ユ湡</th><th class="hw-table__col-name">鍚嶇О</th><th class="hw-table__col-subject">瀛︾</th><th class="hw-table__col-scene">绫诲瀷</th><th class="hw-table__col-participate">鍙備笌鐜?/th><th class="hw-table__col-action">鎿嶄綔</th></tr></thead><tbody><tr class="hw-table__row hw-table__row--alert" data-paper-id="PP_00385" onclick="onHomeworkRowClick(event, " pp_00385")"=""><td class="hw-table__col-check" onclick="event.stopPropagation()"><input type="checkbox" value="PP_00385" onchange="onHomeworkCheckChange(this)" aria-label="閫夋嫨浣滀笟"></td><td class="hw-table__col-date">09/30</td><td class="hw-table__col-name"><span class="hw-table__name" title="鍒濅竴鐢熺墿 绗簩绔?闃舵澶嶄範缁冧範">鍒濅竴鐢熺墿 绗簩绔?闃舵澶嶄範缁冧範</span></td><td class="hw-table__col-subject">鐢熺墿</td><td class="hw-table__col-scene"><span class="tag-scene tag-scene--other">闃舵澶嶄範</span></td><td class="hw-table__col-participate"><div class="hw-progress" title="鍙備笌鐜?25%"><span class="hw-progress__fill hw-progress__fill--low" style="width:25%"></span></div><span class="hw-progress__text">1/4 路 25%</span></td><td class="hw-table__col-action" onclick="event.stopPropagation()"><button type="button" class="btn-text" onclick="quickSelectHomework(event, " pp_00385")"="">閫夋嫨</button></td></tr><tr class="hw-table__row hw-table__row--alert" data-paper-id="PP_00307" onclick="onHomeworkRowClick(event, " pp_00307")"=""><td class="hw-table__col-check" onclick="event.stopPropagation()"><input type="checkbox" value="PP_00307" onchange="onHomeworkCheckChange(this)" aria-label="閫夋嫨浣滀笟"></td><td class="hw-table__col-date">09/30</td><td class="hw-table__col-name"><span class="hw-table__name" title="绗笁鍗曞厓 绉︽湞缁熶竴鍏浗 璇炬椂缁冧範锛堝熀纭€锛?>绗笁鍗曞厓 绉︽湞缁熶竴鍏浗 璇炬椂缁冧範锛堝熀纭€锛?/span></td><td class="hw-table__col-subject">鍘嗗彶</td><td class="hw-table__col-scene"><span class="tag-scene tag-scene--other">鍚屾瀛?/span></td><td class="hw-table__col-participate"><div class="hw-progress" title="鍙備笌鐜?25%"><span class="hw-progress__fill hw-progress__fill--low" style="width:25%"></span></div><span class="hw-progress__text">1/4 路 25%</span></td><td class="hw-table__col-action" onclick="event.stopPropagation()"><button type="button" class="btn-text" onclick="quickSelectHomework(event, " pp_00307")"="">閫夋嫨</button></td></tr><tr class="hw-table__row hw-table__row--alert" data-paper-id="PP_00326" onclick="onHomeworkRowClick(event, " pp_00326")"=""><td class="hw-table__col-check" onclick="event.stopPropagation()"><input type="checkbox" value="PP_00326" onchange="onHomeworkCheckChange(this)" aria-label="閫夋嫨浣滀笟"></td><td class="hw-table__col-date">09/30</td><td class="hw-table__col-name"><span class="hw-table__name" title="绗簩绔?鍚堝苟鍚岀被椤?璇炬椂缁冧範锛堝熀纭€锛?>绗簩绔?鍚堝苟鍚岀被椤?璇炬椂缁冧範锛堝熀纭€锛?/span></td><td class="hw-table__col-subject">鏁板</td><td class="hw-table__col-scene"><span class="tag-scene tag-scene--other">鍚屾瀛?/span></td><td class="hw-table__col-participate"><div class="hw-progress" title="鍙備笌鐜?25%"><span class="hw-progress__fill hw-progress__fill--low" style="width:25%"></span></div><span class="hw-progress__text">1/4 路 25%</span></td><td class="hw-table__col-action" onclick="event.stopPropagation()"><button type="button" class="btn-text" onclick="quickSelectHomework(event, " pp_00326")"="">閫夋嫨</button></td></tr><tr class="hw-table__row hw-table__row--alert" data-paper-id="PP_00406" onclick="onHomeworkRowClick(event, " pp_00406")"=""><td class="hw-table__col-check" onclick="event.stopPropagation()"><input type="checkbox" value="PP_00406" onchange="onHomeworkCheckChange(this)" aria-label="閫夋嫨浣滀笟"></td><td class="hw-table__col-date">09/30</td><td class="hw-table__col-name"><span class="hw-table__name" title="绗簩鍗曞厓 娉曞緥鐨勪綔鐢?璇炬椂缁冧範锛堝熀纭€锛?>绗簩鍗曞厓 娉曞緥鐨勪綔鐢?璇炬椂缁冧範锛堝熀纭€锛?/span></td><td class="hw-table__col-subject">閬撳痉涓庢硶娌?/td><td class="hw-table__col-scene"><span class="tag-scene tag-scene--other">鍚屾瀛?/span></td><td class="hw-table__col-participate"><div class="hw-progress" title="鍙備笌鐜?25%"><span class="hw-progress__fill hw-progress__fill--low" style="width:25%"></span></div><span class="hw-progress__text">1/4 路 25%</span></td><td class="hw-table__col-action" onclick="event.stopPropagation()"><button type="button" class="btn-text" onclick="quickSelectHomework(event, " pp_00406")"="">閫夋嫨</button></td></tr><tr class="hw-table__row hw-table__row--alert" data-paper-id="EX_00351" onclick="onHomeworkRowClick(event, " ex_00351")"=""><td class="hw-table__col-check" onclick="event.stopPropagation()"><input type="checkbox" value="EX_00351" onchange="onHomeworkCheckChange(this)" aria-label="閫夋嫨浣滀笟"></td><td class="hw-table__col-date">09/29</td><td class="hw-table__col-name"><span class="hw-table__name" title="鍒濅竴璇枃涓婂唽鏈熶腑妯℃嫙鍗凤紙涓€锛?>鍒濅竴璇枃涓婂唽鏈熶腑妯℃嫙鍗凤紙涓€锛?/span></td><td class="hw-table__col-subject">璇枃</td><td class="hw-table__col-scene"><span class="tag-scene tag-scene--exam">鍒风湡棰?/span></td><td class="hw-table__col-participate"><div class="hw-progress" title="鍙備笌鐜?25%"><span class="hw-progress__fill hw-progress__fill--low" style="width:25%"></span></div><span class="hw-progress__text">1/4 路 25%</span></td><td class="hw-table__col-action" onclick="event.stopPropagation()"><button type="button" class="btn-text" onclick="quickSelectHomework(event, " ex_00351")"="">閫夋嫨</button></td></tr><tr class="hw-table__row" data-paper-id="EXC_00006" onclick="onHomeworkRowClick(event, " exc_00006")"=""><td class="hw-table__col-check" onclick="event.stopPropagation()"><input type="checkbox" value="EXC_00006" onchange="onHomeworkCheckChange(this)" aria-label="閫夋嫨浣滀笟"></td><td class="hw-table__col-date">09/29</td><td class="hw-table__col-name"><span class="hw-table__name" title="鍒濅竴鐢熺墿涓婂唽鏈熶腑妯℃嫙鍗凤紙涓€锛?>鍒濅竴鐢熺墿涓婂唽鏈熶腑妯℃嫙鍗凤紙涓€锛?/span></td><td class="hw-table__col-subject">鐢熺墿</td><td class="hw-table__col-scene"><span class="tag-scene tag-scene--exam">鍒风湡棰?/span></td><td class="hw-table__col-participate"><div class="hw-progress" title="鍙備笌鐜?50%"><span class="hw-progress__fill hw-progress__fill--warn" style="width:50%"></span></div><span class="hw-progress__text">2/4 路 50%</span></td><td class="hw-table__col-action" onclick="event.stopPropagation()"><button type="button" class="btn-text" onclick="quickSelectHomework(event, " exc_00006")"="">閫夋嫨</button></td></tr><tr class="hw-table__row hw-table__row--alert" data-paper-id="PP_00334" onclick="onHomeworkRowClick(event, " pp_00334")"=""><td class="hw-table__col-check" onclick="event.stopPropagation()"><input type="checkbox" value="PP_00334" onchange="onHomeworkCheckChange(this)" aria-label="閫夋嫨浣滀笟"></td><td class="hw-table__col-date">09/29</td><td class="hw-table__col-name"><span class="hw-table__name" title="Unit3 Grammar 鍚屾缁冧範">Unit3 Grammar 鍚屾缁冧範</span></td><td class="hw-table__col-subject">鑻辫</td><td class="hw-table__col-scene"><span class="tag-scene tag-scene--other">鍚屾瀛?/span></td><td class="hw-table__col-participate"><div class="hw-progress" title="鍙備笌鐜?25%"><span class="hw-progress__fill hw-progress__fill--low" style="width:25%"></span></div><span class="hw-progress__text">1/4 路 25%</span></td><td class="hw-table__col-action" onclick="event.stopPropagation()"><button type="button" class="btn-text" onclick="quickSelectHomework(event, " pp_00334")"="">閫夋嫨</button></td></tr><tr class="hw-table__row hw-table__row--alert" data-paper-id="PP_00319" onclick="onHomeworkRowClick(event, " pp_00319")"=""><td class="hw-table__col-check" onclick="event.stopPropagation()"><input type="checkbox" value="PP_00319" onchange="onHomeworkCheckChange(this)" aria-label="閫夋嫨浣滀笟"></td><td class="hw-table__col-date">09/29</td><td class="hw-table__col-name"><span class="hw-table__name" title="绗簩绔?鍔涗笌杩愬姩 璇炬椂缁冧範锛堝熀纭€锛?>绗簩绔?鍔涗笌杩愬姩 璇炬椂缁冧範锛堝熀纭€锛?/span></td><td class="hw-table__col-subject">绉戝</td><td class="hw-table__col-scene"><span class="tag-scene tag-scene--other">鍚屾瀛?/span></td><td class="hw-table__col-participate"><div class="hw-progress" title="鍙備笌鐜?25%"><span class="hw-progress__fill hw-progress__fill--low" style="width:25%"></span></div><span class="hw-progress__text">1/4 路 25%</span></td><td class="hw-table__col-action" onclick="event.stopPropagation()"><button type="button" class="btn-text" onclick="quickSelectHomework(event, " pp_00319")"="">閫夋嫨</button></td></tr><tr class="hw-table__row hw-table__row--alert" data-paper-id="PP_00403" onclick="onHomeworkRowClick(event, " pp_00403")"=""><td class="hw-table__col-check" onclick="event.stopPropagation()"><input type="checkbox" value="PP_00403" onchange="onHomeworkCheckChange(this)" aria-label="閫夋嫨浣滀笟"></td><td class="hw-table__col-date">09/29</td><td class="hw-table__col-name"><span class="hw-table__name" title="鍒濅竴鑻辫 Unit3 闃舵澶嶄範缁冧範">鍒濅竴鑻辫 Unit3 闃舵澶嶄範缁冧範</span></td><td class="hw-table__col-subject">鑻辫</td><td class="hw-table__col-scene"><span class="tag-scene tag-scene--other">闃舵澶嶄範</span></td><td class="hw-table__col-participate"><div class="hw-progress" title="鍙備笌鐜?25%"><span class="hw-progress__fill hw-progress__fill--low" style="width:25%"></span></div><span class="hw-progress__text">1/4 路 25%</span></td><td class="hw-table__col-action" onclick="event.stopPropagation()"><button type="button" class="btn-text" onclick="quickSelectHomework(event, " pp_00403")"="">閫夋嫨</button></td></tr><tr class="hw-table__row hw-table__row--alert" data-paper-id="PP_00316" onclick="onHomeworkRowClick(event, " pp_00316")"=""><td class="hw-table__col-check" onclick="event.stopPropagation()"><input type="checkbox" value="PP_00316" onchange="onHomeworkCheckChange(this)" aria-label="閫夋嫨浣滀笟"></td><td class="hw-table__col-date">09/29</td><td class="hw-table__col-name"><span class="hw-table__name" title="缁嗚優鐨勭粨鏋勪笌鍔熻兘 钖勫急鍐嶇粌">缁嗚優鐨勭粨鏋勪笌鍔熻兘 钖勫急鍐嶇粌</span></td><td class="hw-table__col-subject">鐢熺墿</td><td class="hw-table__col-scene"><span class="tag-scene tag-scene--other">鍚屾瀛﹁杽寮卞啀缁?/span></td><td class="hw-table__col-participate"><div class="hw-progress" title="鍙備笌鐜?25%"><span class="hw-progress__fill hw-progress__fill--low" style="width:25%"></span></div><span class="hw-progress__text">1/4 路 25%</span></td><td class="hw-table__col-action" onclick="event.stopPropagation()"><button type="button" class="btn-text" onclick="quickSelectHomework(event, " pp_00316")"="">閫夋嫨</button></td></tr></tbody></table></div>
+                </div>
+                <div id="homeworkCheckPager" class="hw-picker__pager"><span class="hw-picker__pager-info">鍏?133 椤癸紝绗?1鈥?0 椤?/span><div class="hw-picker__pager-btns"><button type="button" class="btn btn-outline btn-sm" disabled="" onclick="changeHomeworkListPage(0)">涓婁竴椤?/button><span class="hw-picker__pager-page">1 / 14</span><button type="button" class="btn btn-outline btn-sm" onclick="changeHomeworkListPage(2)">涓嬩竴椤?/button></div></div>
+              </div>
+            </section>
+
+            <div id="hwActionBar" class="hw-action-bar" role="region" aria-label="浣滀笟閫夋嫨鎿嶄綔">
+              <div class="hw-action-bar__left">
+                <span id="hwSelectedCount" class="hw-action-bar__count">宸查€?<strong>0</strong> 椤?/span>
+                <span class="hw-action-bar__hint">鍕鹃€夊垪琛ㄤ腑鐨勪綔涓氬悗纭鍒嗘瀽</span>
+              </div>
+              <button type="button" class="btn btn-primary hw-action-bar__btn" onclick="confirmHomeworkSelection()">
+                纭骞舵煡鐪嬪垎鏋?
+              </button>
+            </div>
+
+            <div id="homeworkAnalysisContent" class="hw-zone hw-zone--results hw-analysis" hidden="">
+              <div class="card mb-16">
+                <div class="card-header">
+                  <h3 class="card-title">浣滀笟鏍稿績鎸囨爣</h3>
+                  <button type="button" class="btn btn-outline btn-sm" onclick="exportFullHomeworkReport()">瀵煎嚭瀹屾暣鎶ュ憡</button>
+                </div>
+                <div id="hwCoreMetrics" class="board-metrics-layout board-metrics-layout--compact mb-16"></div>
+                <div id="hwDistribution" class="tier-grid"></div>
+              </div>
+              <div class="card mb-16">
+                <h3 class="card-title mb-16">鍚勮祫婧愬鎯呰鎯?/h3>
+                <div id="hwResourceList" class="hw-resource-list"></div>
+              </div>
+              <div class="ai-card ai-card--insight">
+                <h3 class="ai-title">鏅鸿兘璁茶瘎寤鸿</h3>
+                <div id="hwAiSuggestion"></div>
+              </div>
+            </div>
+
+            <section id="homeworkPlaceholder" class="hw-zone hw-zone--hint">
+              <div class="state-empty state-empty--hint">
+                <p class="state-empty__title">灏氭湭鐢熸垚浣滀笟鍒嗘瀽</p>
+                <p class="state-empty__desc">鍕鹃€変綔涓氬苟鐐瑰嚮搴曢儴銆岀‘璁ゅ苟鏌ョ湅鍒嗘瀽銆?/p>
+              </div>
+            </section>
+          </div>
+
+          <div class="tab-content board-panel" id="selfStudyPanel" role="tabpanel" hidden="">
+            <div class="grid-2 mb-16">
+              <div class="card">
+                <h3 class="card-title">瀛︿範姒傝</h3>
+                <div id="ssOverview" class="ss-overview"><div class="ss-stat-grid"><div class="ss-stat"><div class="ss-stat__value">4/4</div><div class="ss-stat__label">瀛︿範鍙備笌浜烘暟</div></div><div class="ss-stat"><div class="ss-stat__value">100%</div><div class="ss-stat__label">瀛︿範鍙備笌鐜?/div></div><div class="ss-stat"><div class="ss-stat__value">52.5</div><div class="ss-stat__label">浜哄潎瀛︿範棰戞</div></div><div class="ss-stat"><div class="ss-stat__value">210</div><div class="ss-stat__label">绱瀛︿範娆℃暟</div></div></div></div>
+              </div>
+              <div class="card">
+                <h3 class="card-title">瀛︾鍋忓ソ鍒嗗竷</h3>
+                <div id="ssSubjectChart" class="chart-box chart-box--md chart-box--subject-usage"></div>
+              </div>
+            </div>
+            <div class="grid-2 mb-16">
+              <div class="card">
+                <h3 class="card-title">钖勫急鐭ヨ瘑鐐?TOP5</h3>
+                <div id="ssWeakChart" class="chart-box chart-box--sm" style="height: 240px"></div>
+              </div>
+              <div class="card">
+                <h3 class="card-title">楂橀閿欓 TOP5</h3>
+                <div id="ssErrorChart" class="chart-box chart-box--sm" style="height: 240px"></div>
+              </div>
+            </div>
+            <div class="card">
+              <div class="card-header">
+                <h3 class="card-title">瀛︾敓鎬昏</h3>
+                <div class="card-header__actions">
+                  <input type="text" class="input card-header__search" id="studentSearch" placeholder="鎼滅储瀛︾敓" oninput="onStudentSearch()">
+                  <button type="button" class="btn btn-outline btn-sm" onclick="exportStudentDetail()">瀵煎嚭鏄庣粏</button>
+                </div>
+              </div>
+              <div id="ssStudentTable"><table class="data-table" id="studentDataTable"><thead><tr><th onclick="sortTable('studentDataTable',0,'string')">濮撳悕</th><th onclick="sortTable('studentDataTable',1,'number')">瀛︿範澶╂暟</th><th onclick="sortTable('studentDataTable',2,'number')">鍋氶娆℃暟</th><th onclick="sortTable('studentDataTable',3,'number')">姝ｇ‘鐜?/th><th>鐘舵€?/th></tr></thead><tbody><tr data-name="璁搁潤闆?><td><a href="student-detail.html?id=S001">璁搁潤闆?/a></td><td>25澶?/td><td>38娆?/td><td style="color:var(--warning)">69.4%</td><td><span class="tag tag-warning">涓€鑸?/span></td></tr><tr data-name="閮洦鑿?><td><a href="student-detail.html?id=S002">閮洦鑿?/a></td><td>27澶?/td><td>39娆?/td><td style="color:var(--warning)">76.5%</td><td><span class="tag tag-good">鑹ソ</span></td></tr><tr data-name="閭逛匠鎬?><td><a href="student-detail.html?id=S003">閭逛匠鎬?/a></td><td>24澶?/td><td>48娆?/td><td style="color:var(--warning)">70.9%</td><td><span class="tag tag-good">鑹ソ</span></td></tr><tr data-name="楂樻娑?><td><a href="student-detail.html?id=S004">楂樻娑?/a></td><td>25澶?/td><td>36娆?/td><td style="color:var(--success)">81.1%</td><td><span class="tag tag-success">浼樼</span></td></tr></tbody></table></div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/echarts@5.4.3/dist/echarts.min.js"></script>
+    <script src="js/common.js?v=20260612"></script>
+    <script src="js/diagnosis.js?v=20260618"></script>
+  
+
+</body></html>

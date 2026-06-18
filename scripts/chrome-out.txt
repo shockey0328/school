@@ -1,0 +1,46 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="js/site-config.js"></script>
+    <title>鐧诲綍 鈥?骞垮窞澶у闄勫睘涓鏁欒偛闆嗗洟瀛︽儏鏁版嵁鐪嬫澘</title>
+    <link rel="stylesheet" href="css/style.css">
+  </head>
+  <body class="login-page">
+    <main class="login-card login-card--elevated" aria-label="闆嗗洟鐧诲綍">
+      <div class="login-logo">骞垮窞澶у闄勫睘涓鏁欒偛闆嗗洟</div>
+      <div class="login-subtitle">瀛︽儏鏁版嵁鐪嬫澘 路 缁熶竴鐧诲綍</div>
+      <div class="login-divider"></div>
+      <div class="login-field">
+        <label class="visually-hidden" for="username">璐﹀彿</label>
+        <input class="input" type="text" id="username" name="username" placeholder="璇疯緭鍏ヨ处鍙? autocomplete="username">
+      </div>
+      <div class="login-field-last">
+        <label class="visually-hidden" for="password">瀵嗙爜</label>
+        <input class="input" type="password" id="password" name="password" placeholder="璇疯緭鍏ュ瘑鐮? autocomplete="current-password">
+      </div>
+      <button type="button" class="btn btn-primary" id="loginBtn" onclick="handleLogin()">鐧?褰?/button>
+      <p class="login-hint">Demo 璐﹀彿璇疯仈绯荤鐞嗗憳鑾峰彇</p>
+      <p class="login-copyright">漏 2025 骞垮窞澶у闄勫睘涓鏁欒偛闆嗗洟 瀛︽儏鏁版嵁鐪嬫澘</p>
+    </main>
+    <script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
+    <script src="js/common.js?v=20260602"></script>
+    <script src="js/login.js?v=20260602"></script>
+    <script>
+      document.addEventListener('DOMContentLoaded', function () {
+        try {
+          if (typeof AppState !== 'undefined' && AppState.getUser && AppState.getSchool) {
+            var user = AppState.getUser();
+            if (user && AppState.getSchool()) {
+              var href = user.user_level === '绠＄悊灞? ? 'cockpit.html' : 'diagnosis.html';
+              window.location.replace(href);
+            }
+          }
+        } catch (e) {
+          console.warn(e);
+        }
+      });
+    </script>
+  
+
+</body></html>

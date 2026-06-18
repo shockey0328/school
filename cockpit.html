@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="js/site-config.js"></script>
+    <title>学校驾驶舱 - 学情数据看板</title>
+    <link rel="stylesheet" href="css/style.css?v=20260719" />
+  </head>
+  <body class="page-cockpit" data-page-title="学校驾驶舱">
+    <div class="dashboard-layout">
+      <div class="header" id="header"></div>
+      <div class="sidebar" id="sidebar"></div>
+      <div class="main-content" id="mainContent">
+        <div id="pageLoading" class="card mb-16 page-loading">数据加载中…</div>
+
+        <div id="pageBody" style="display: none">
+          <header class="page-header page-header--dashboard">
+            <h1 class="page-title">学校驾驶舱</h1>
+          </header>
+
+          <section class="board-zone board-zone--toolbar" aria-label="筛选">
+            <div class="filter-toolbar" role="search">
+              <label class="filter-field">
+                <span class="filter-label">年级</span>
+                <select id="globalGradeFilter" class="select" onchange="onGlobalFilterChange()">
+                  <option value="">全部年级</option>
+                </select>
+              </label>
+              <label class="filter-field">
+                <span class="filter-label">学科</span>
+                <select id="globalSubjectFilter" class="select" onchange="onGlobalFilterChange()">
+                  <option value="">全部学科</option>
+                </select>
+              </label>
+            </div>
+          </section>
+
+          <section class="board-zone board-zone--metrics" aria-label="全校概览">
+            <h2 class="board-section__heading">全校概览</h2>
+            <div id="coreMetrics" class="core-metrics-grid"></div>
+          </section>
+
+          <section class="board-zone board-zone--analysis" aria-label="学情分析" id="learningPanel">
+            <h2 class="board-section__heading">学情分析</h2>
+
+            <div class="learning-analysis">
+              <div class="analysis-grid analysis-grid--2 mb-16">
+                <article class="analysis-block">
+                  <header class="analysis-block__head">
+                    <h3 class="analysis-block__title">学习活跃趋势</h3>
+                    <span id="ssTrendFilter" class="analysis-block__aside"></span>
+                  </header>
+                  <div class="analysis-block__body">
+                    <div id="ssTrendChart" class="chart-panel chart-panel--md"></div>
+                  </div>
+                </article>
+                <article class="analysis-block">
+                  <header class="analysis-block__head">
+                    <h3 class="analysis-block__title">学科学习分布</h3>
+                  </header>
+                  <div class="analysis-block__body">
+                    <div id="ssSubjectChart" class="chart-panel chart-panel--md"></div>
+                  </div>
+                </article>
+              </div>
+
+              <article class="analysis-block mb-16">
+                <header class="analysis-block__head">
+                  <h3 class="analysis-block__title">薄弱知识点</h3>
+                </header>
+                <div class="analysis-block__body">
+                  <div class="analysis-split">
+                    <div class="analysis-split__pane">
+                      <p class="analysis-split__label">薄弱知识点排行</p>
+                      <div id="ssWeakKnowledgeChart" class="weak-kp-chart"></div>
+                    </div>
+                    <div class="analysis-split__pane analysis-split__pane--cloud">
+                      <p class="analysis-split__label">词云图</p>
+                      <div id="ssWeakKnowledgeCloud" class="weak-kp-cloud-box"></div>
+                    </div>
+                  </div>
+                </div>
+              </article>
+
+              <article class="analysis-block">
+                <header class="analysis-block__head">
+                  <h3 class="analysis-block__title">高频错题 TOP10</h3>
+                </header>
+                <div class="analysis-block__body analysis-block__body--table">
+                  <div id="ssHighFreqErrors" class="analysis-table-wrap"></div>
+                  <div id="ssHighFreqErrorsFooter" class="high-freq-errors-footer"></div>
+                </div>
+              </article>
+            </div>
+          </section>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/echarts@5.4.3/dist/echarts.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/echarts-wordcloud@2.1.0/dist/echarts-wordcloud.min.js"></script>
+    <script src="js/common.js?v=20260612"></script>
+    <script src="js/cockpit.js?v=20260612"></script>
+  </body>
+</html>

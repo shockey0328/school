@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <script src="js/site-config.js"></script>
+    <title>班级管理 - 学情数据看板</title>
+    <link rel="stylesheet" href="css/style.css?v=20260719" />
+  </head>
+  <body class="page-diagnosis" data-page-title="班级管理">
+    <div class="dashboard-layout">
+      <div class="header" id="header"></div>
+      <div class="sidebar" id="sidebar"></div>
+      <div class="main-content main-content--board">
+        <header class="page-header page-header--board page-header--role">
+          <div class="page-header__main">
+            <h1 class="page-title">班级管理</h1>
+          </div>
+        </header>
+
+        <section class="board-zone board-zone--toolbar" aria-label="班级筛选">
+          <div class="filter-toolbar" role="search">
+            <label class="filter-field">
+              <span class="filter-label">年级</span>
+              <select id="gradeSelect" class="select" onchange="onGradeChange()"></select>
+            </label>
+            <label class="filter-field">
+              <span class="filter-label">班级</span>
+              <select id="classSelect" class="select" onchange="onClassChange()"></select>
+            </label>
+            <label class="filter-field">
+              <span class="filter-label">学科</span>
+              <select id="subjectSelect" class="select" onchange="onSubjectChange()"></select>
+            </label>
+          </div>
+        </section>
+
+        <section class="board-zone board-zone--metrics" aria-label="班级概览">
+          <h2 class="board-section__heading">班级概览</h2>
+          <div id="coreMetrics" class="core-metrics-grid core-metrics-grid--4"></div>
+        </section>
+
+        <section class="board-zone board-zone--analysis" aria-label="学情分析">
+          <h2 class="board-section__heading">学情数据</h2>
+          <nav class="board-tabs tabs" id="mainTabs" role="tablist">
+            <button type="button" class="tab board-tabs__btn active" role="tab" onclick="switchMainTab(0)">学情分析</button>
+            <button type="button" class="tab board-tabs__btn" role="tab" onclick="switchMainTab(1)">试卷分析</button>
+          </nav>
+
+          <div class="tab-content board-panel homework-panel" id="homeworkPanel" role="tabpanel" hidden>
+            <article class="analysis-block hw-paper-list">
+              <header class="analysis-block__head">
+                <h3 class="analysis-block__title">试卷列表</h3>
+                <p class="analysis-block__aside" id="hwListHint" hidden></p>
+              </header>
+              <div class="analysis-block__body analysis-block__body--flush">
+                <div id="homeworkCheckList" class="hw-paper-list__table"></div>
+                <nav id="homeworkCheckPager" class="hw-paper-list__pager" hidden aria-label="试卷列表分页"></nav>
+              </div>
+            </article>
+
+            <section id="paperDetailPanel" class="paper-detail" hidden aria-label="试卷详情">
+              <div class="card paper-detail__card">
+                <header class="paper-detail__head">
+                  <button type="button" class="btn btn-outline btn-sm" onclick="closePaperDetail()">返回列表</button>
+                  <div class="paper-detail__title-wrap">
+                    <h3 class="card-title" id="paperDetailTitle">试卷详情</h3>
+                    <p class="paper-detail__meta" id="paperDetailMeta"></p>
+                  </div>
+                </header>
+                <div id="paperDetailBody" class="paper-detail__body"></div>
+              </div>
+            </section>
+
+            <section id="homeworkPlaceholder" class="hw-zone hw-zone--hint" hidden>
+              <div class="state-empty state-empty--hint">
+                <p class="state-empty__title">暂无试卷分析</p>
+                <p class="state-empty__desc">当前筛选条件下没有试卷数据</p>
+              </div>
+            </section>
+          </div>
+
+          <div class="tab-content active board-panel" id="selfStudyPanel" role="tabpanel">
+            <div class="learning-analysis">
+              <div class="analysis-grid analysis-grid--2 mb-16">
+                <article class="analysis-block">
+                  <header class="analysis-block__head">
+                    <h3 class="analysis-block__title">学习活跃趋势</h3>
+                    <span id="ssTrendFilter" class="analysis-block__aside"></span>
+                  </header>
+                  <div class="analysis-block__body">
+                    <div id="ssTrendChart" class="chart-panel chart-panel--md"></div>
+                  </div>
+                </article>
+                <article class="analysis-block">
+                  <header class="analysis-block__head">
+                    <h3 class="analysis-block__title">学科学习分布</h3>
+                  </header>
+                  <div class="analysis-block__body">
+                    <div id="ssSubjectChart" class="chart-panel chart-panel--md"></div>
+                  </div>
+                </article>
+              </div>
+
+              <article class="analysis-block mb-16">
+                <header class="analysis-block__head">
+                  <h3 class="analysis-block__title">薄弱知识点</h3>
+                </header>
+                <div class="analysis-block__body">
+                  <div class="analysis-split">
+                    <div class="analysis-split__pane">
+                      <p class="analysis-split__label">薄弱知识点排行</p>
+                      <div id="ssWeakKnowledgeChart" class="weak-kp-chart"></div>
+                    </div>
+                    <div class="analysis-split__pane analysis-split__pane--cloud">
+                      <p class="analysis-split__label">词云图</p>
+                      <div id="ssWeakKnowledgeCloud" class="weak-kp-cloud-box"></div>
+                    </div>
+                  </div>
+                </div>
+              </article>
+
+              <article class="analysis-block">
+                <header class="analysis-block__head">
+                  <h3 class="analysis-block__title">高频错题 TOP10</h3>
+                </header>
+                <div class="analysis-block__body analysis-block__body--table">
+                  <div id="ssHighFreqErrors" class="analysis-table-wrap"></div>
+                  <div id="ssHighFreqErrorsFooter" class="high-freq-errors-footer"></div>
+                </div>
+              </article>
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/echarts@5.4.3/dist/echarts.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/echarts-wordcloud@2.1.0/dist/echarts-wordcloud.min.js"></script>
+    <script src="js/common.js?v=20260612"></script>
+    <script src="js/diagnosis.js?v=20260612b"></script>
+  </body>
+</html>
